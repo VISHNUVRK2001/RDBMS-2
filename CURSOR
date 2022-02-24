@@ -1,0 +1,42 @@
+QUERIES:
+
+1)Use the database:
+usesalarydetails;
+2) Creatingemployee table:
+create table employee(empnoint(10),name varchar(20),designation varchar(20),department varchar(20),basic varchar(10),da int(10),ma int(10),allowance int(10),deduction int(10));
+
+3)Inserting the values into employee tables:
+insert into employee tables(1,’raja’,’manager’,’sales’,20000,500,400,500,800);
+insertinto employee tables(2,’ravi’,’technical assistant’,’production’,15000,400,300,200,700);
+insert into employee tables(3,’sam’,’clerk’,’office’,10000,200,500,400,500);
+
+4)Fetching the inserted values using SELECT statement:
+select *from employee;
+
+5) The Cursor to update the salary details of the employee.
+DELIMITER $$
+CREATE PROCEDURE updatesalary(empidint)
+BEGIN
+  DECLARE basic int(10);
+   DECLARE da int(10);
+  DECLARE ma int(10);
+  DECLARE allowance int(10);
+  DECLARE deduction int(10);
+
+  DECLARE cur1 CURSOR FOR SELECT basic,da,ma,allowance,deduction from employee where empno=empid;
+
+OPEN cur1;
+FETCH cur1 INTO basic,da,ma,allowance,deduction;
+update employee set basic=15000,da=1000,ma=540,allowance=870,deduction=652 where empno=empid;
+CLOSE cur1;
+END;
+$$
+6)Viewing the results:
+call updatesalary(2);
+select *from employee;
+
+
+
+
+RESULT:
+ MySQL queries were performed and the output was verified.
