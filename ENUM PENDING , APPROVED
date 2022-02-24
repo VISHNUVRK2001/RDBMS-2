@@ -1,0 +1,29 @@
+QUERIES:
+(i) Creating the Database and use the database:
+mysql>create database views;
+mysql>use views;
+(ii) Creating Table requests, requestslog:
+mysql> create table requests(id INT UNSIGNED AUTO_INCREMENT, fromid int(10),toid int(10),primary key(id));
+mysql>create table requestlog(id INT UNSIGNED AUTO_INCREMENT,status enum(“pending”,”approved”,”rejected”), FOREIGN KEY(id) REFERENCES requests(id));
+(iii) Inserting the values to the requests table:
+mysql>insert into requests(fromid,toid)values(5,10);
+mysql>insert into requests(fromid,toid)values(15,20);
+mysql>insert into requests(fromid,toid)values(20,22);
+(iv) Inserting the values to the requestlog table:
+mysql>insert into requestlog(status)values(“approved”);
+mysql>insert into requestlog(status)values(“rejected”);
+mysql>insert into requestlog(status)values(“pending”);
+(v)Fetching  the inserted values using SELECT statement:
+mysql> select *from requests;
+mysql>select *from requestlog;
+(vi)Create the view statement for combining requests and requestlog tables:
+mysql>create view reqview as select fromid,toid,status from requests join requestlog using(id);
+(vi) Fetching the values in the view using SELECT statement:
+mysql> select *from reqview;
+
+
+
+
+ RESULT:
+      MySQL queries were performed and the output was verified.
+
