@@ -1,0 +1,30 @@
+QUERIES:
+(i)  Create Database polytechnic_college and use polytechnic_college Database:
+mysql> create database polytechnic_college;
+mysql>use polytechnic_college;
+
+(ii) Create the two users:
+
+mysql>create user Staff;
+mysql>create user student;
+
+(iii) Granting (Giving)the permissions to the users:
+mysql>GRANT ALL ON polytechnic_college TO Staff;
+mysql>GRANT CREATE on polytechnic_college TO student;
+
+(iv) Checking the grant permissions given to the users:
+mysql>show grants for Staff;
+mysql>show grants for student;
+
+(v) Revoking (Removing)the permissions from the users:
+
+mysql>REVOKE ALL ON polytechnic_college FROM Staff;
+mysql>REVOKE CREATE  ON polytechnic_college FROM student;
+
+(vi) Checking the permission after REVOKE command:
+mysql>show grants for Staff;
+mysql>show grants for student;
+
+RESULT:
+      MySQL queries were performed and the output was verified.
+
