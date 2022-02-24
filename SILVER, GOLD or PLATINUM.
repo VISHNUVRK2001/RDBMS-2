@@ -1,0 +1,43 @@
+QUERIES:
+
+1)Use the database:
+use bankdetails;
+2) Creating bank,creditlimit tables:
+create table bank(id int(20),name varchar(20),initial int(20),deposit int(20),withdrawlint(20));
+create table creditlimit(id INT UNSIGNED AUTO_INCREMENT ,credit int(20));
+3)Inserting the values into bank and creditlimit tables:
+insert into bank values(10,’priya’,2000,5000,4000);
+insert into bank values(20,’pooja’,82000,4000,7000);
+insert into bank values(30,’kavi’,50000,2000,5000);
+insert into creditlimit(credit) select initial +deposit- withdrawl from bank;
+4)Fetching  the inserted values using SELECT statement:
+select *from bank;
+select *from creditlimit;
+
+5)Control Statement to find out the customer levels based on credit limits:
+DELIMITER $$
+
+CREATE FUNCTION customerlevel() RETURNS VARCHAR(10)
+    DETERMINISTIC
+
+BEGIN
+    DECLARE lvlvarchar(10);
+    DECLARE cl double;
+     select credit into cl from creditlimit where id=1;
+
+     IF cl> 50000 THEN
+         SET lvl = 'PLATINUM';
+    ELSEIF (cl<= 50000 AND cl>= 10000) THEN
+        SET lvl = 'GOLD';
+    ELSEIF cl< 10000 THEN
+        SET lvl = 'SILVER';
+    END IF;
+
+    RETURN (lvl);
+END
+
+6)Viewing the results using SELECT statement:
+select customerlevel();
+
+
+
