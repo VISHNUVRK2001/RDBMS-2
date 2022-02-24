@@ -1,0 +1,32 @@
+QUERIES:
+(i) Creating the Database and use the database:
+mysql>create database joins;
+mysql>use joins;
+
+
+(ii) Creating Table users, userprofiles:
+mysql> create table users(id INT UNSIGNED  AUTO_INCREMENT,username varchar(60),password varchar(128),email varchar(255),primary key(id));
+mysql> create table userprofiles(id INT UNSIGNED AUTO_INCREMENT,firstname varchar(60),lastname varchar(60) ,mobile varchar(15),CONSTRAINT fjoin FOREIGN KEY(id) REFERENCES users(id));
+(iii) Inserting the values to the users table:
+mysql>insert into users(username,password,email)values(‘raja’,’raj1234’,’raja2020@gmail.com’);
+mysql>insert into users(username,password,email)values(‘ravi,’raviravi’,’ravi12@gmail.com’);
+mysql>insert into users(username,password,email)values(‘raghu’,’raghu34’,’raghu2@gmail.com’);
+
+ (iv) Inserting the values to the userprofiles table:
+mysql>insert into userprofiles(firstname,lastname,mobile)values(‘rajan’,’prakash’,’9000123452’);
+mysql>insert into userprofiles(firstname,lastname,mobile)values(‘ravikumar’,’chandran’,’9080706050’);
+mysql>insert into userprofiles(firstname,lastname,mobile)values(‘raghunath’,’gopal’,’9123456789’);
+
+(v) SELECT all the users along with their profile details by using INNER JOIN:
+
+mysql> select  firstname,lastname,username,password,email,mobile
+             from
+	users t1
+	INNER JOIN userprofiles t2 ON t1.id=t2.id;
+(vi) SELECT the users who do not have profiles using LEFT JOIN:
+mysql>select username from users 
+	LEFT JOIN userprofiles ON users.id=userprofiles.id
+	where userprofiles.id is NULL;
+
+RESULT:
+      MySQL queries were performed and the output was verified.
