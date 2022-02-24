@@ -1,0 +1,28 @@
+QUERIES:
+
+(i) Creating the Database and use the database:
+mysql>create database copyingrecords;
+mysql>use copyingrecords;
+(ii) Creating Table library, library1:
+mysql> create table library(booktitle varchar(30),author varchar(30),publisher varchar(30),price number(10));
+mysql>create table library1 LIKE library;
+
+
+(iii) Inserting the values to the library table:
+mysql>insert into library values(‘os’,’silberschatz’,’tata mcgrawhill’,550);
+mysql>insert into library values(‘mysql,’vikram vaswani’,’tata mcgrawhill’,750);
+mysql>insert into library values(‘internet and www – how to program’,’deitel’,’pearson’,1000);
+(iv) Viewing the inserted values in the library table using SELECT statement:
+mysql>select *from library;
+(v)Copying the values from library table to library1 table:
+mysql>insert into library1 select *from library;
+(vi)Viewing the records in the library1 table:
+mysql>select *from library1;
+
+
+
+
+
+RESULT:
+       MySQL queries were performed and the output was verified.
+
