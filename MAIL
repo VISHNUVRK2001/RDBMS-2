@@ -1,0 +1,33 @@
+QUERIES:
+(i) Creating the Database and use the database:
+mysql>create database maildetails;
+mysql>use maildetails;
+(ii) Create the table mail:
+mysql>create table mail(t DATETIME,srcuser varchar(8), srchost varchar(20), dstuser varchar(8), dsthost varchar(20),size BIGINT(10));
+
+
+(iii) Inserting the values to the mail table:
+mysql>insert into mail values('2017-05-11','raj','rajaa','akil','akilakil',58);
+mysql>insert into mail values('2017-04-18','sam','samson','ram’,’ramsaran’,28);
+mysql>insert into mail values('2017-04-8','pooja','prani','priya','mukil',15);
+mysql>insert into mail values('2017-04-8','pooja','prani','priya','mukil',15);
+(iv) Sort the mail with the largest mail being first:
+
+mysql>select srcuser,dstuser from mail ORDER BY size desc;
+
+(v) List the mails that is over 25 MB:
+
+mysql>select srcuser,dstuser from mail where size>25;
+
+(vi) Remove the duplicate rows from result set:
+
+mysql>select distinct srcuser,dstuser from mail;
+
+(vi) Execute a 'SELECT' query and store its result in a user defined variable. Use 
+another ‘SELECT' to display the value of the variable.
+mysql> SET @v1:=(select  srcuser from mail where dstuser='akil' );
+mysql> SET @v2:=(select  srchost from mail where dstuser='akil' );
+mysql> select @v1,@v2;
+
+
+
