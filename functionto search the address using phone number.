@@ -1,0 +1,37 @@
+QUERIES:
+
+1)Use the database:
+usephonedetails;
+2) Creatingphone table:
+create table phone(phonenumbervarchar(20),username varchar(30),addressvarchar(30),cityvarchar(30),pincodeint(15));
+
+3)Inserting the values into phone tables:
+insert into phone values(9876543211,’priya’,’12-nehru nagar’,’cbe’,641107);
+insert into phone values(9998887776,’ravi’,’15-raja street’,’chennai’,600028);
+insert into phone values(9955664466,’arun’,’18-k.k nagar’,’cbe’,641108);
+
+4)Fetching the inserted values using SELECT statement:
+select *from phone;
+5)Thefunction to search the address using phone number:
+
+DELIMITER $$
+CREATE FUNCTION search(phnovarchar(10))  RETURNS varchar(100)
+BEGIN
+declare a varchar(50);
+declare b varchar(30);
+declare c varchar(30);
+declare d int(15);
+declare e varchar(50);
+SET a= (SELECT username FROM phone WHERE phonenumber=phno);
+	SET b= (SELECT address FROM phone WHERE phonenumber=phno );
+SET c= (SELECT city FROM phone WHERE phonenumber=phno);
+ SET d= (SELECT pincode FROM phone WHERE phonenumber=phno);
+SET e=CONCAT (a,',',b,',',c,',',d);
+return e;
+    END
+$$
+
+6)Viewing the results:
+select search(9998887776);
+
+
