@@ -1,0 +1,33 @@
+QUERIES:
+(i) Create Database transaction and use transaction Database:
+
+mysql> create database transaction;
+mysql>use transaction;
+
+(ii) Create student table:
+mysql>create table student(regno varchar(10),name varchar(20),department varchar(10));
+(iii) Inserting the values to the tables:
+mysql>insert into student values(14005025,’raja’,’cse’);
+mysql>insert into student values(14005026,’ravi’,’ece’);
+(iv)Viewing the result using SELECT statement:
+mysql>select *from student;
+Commit:
+mysql>begin;
+mysql>insert into student values(14005027,’rakesh’,’eee’);
+mysql>commit;
+mysql>select *from student;
+Rollback:
+mysql>begin;
+mysql>insert into student values(14005028,’suresh’,’mech’);
+mysql>select *from student;
+mysql>rollback;
+mysql>select *from student;
+SavePoint:
+mysql>start transaction;
+mysql>savepoint s1;
+mysql>insert into student values(‘14005029’,’ranjith’,’auto’);
+mysql>select *from student;
+mysql>ROLLBACK TO s1;
+mysql>select *from student;
+
+
