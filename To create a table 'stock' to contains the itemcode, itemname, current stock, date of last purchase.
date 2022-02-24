@@ -1,0 +1,38 @@
+QUERIES:
+
+1)Use the database:
+usestockdetails;
+2) Creatingstock table:
+create table stock(itemcodevarchar(20) ,itemnamevarchar(30),currentstockint(10),lastpurchasedate TIMESTAMP);
+
+3)Inserting the values into stock tables:
+insert into stock values('cel',’cello pen',300,'10-12-16');
+insert into stock values('rey','reynolds pen’,120,'12-01-16');
+insert into stock values('fla','flair pen’,420,'22-08-16');
+
+4)Fetching the inserted values using SELECT statement:
+select *from stock;
+5) The stored procedure to  perform delete, update operations:
+DELIMITER $$
+CREATE PROCEDURE stock(IN itemid VARCHAR(20), IN newquantity INT(6))
+BEGIN
+delete from stock where itemcode=itemid and TIMESTAMPDIFF(MONTH,lastpurchasedate,curdate())>=12;
+update stock set currentstock=currentstock+newquantity where itemcode=itemid;
+END 
+$$
+
+6)Viewing the results of Procedureusingcall() statement:
+CALLstock(‘rey’,500);
+
+
+
+
+
+
+
+
+
+
+
+RESULT:
+ MySQL queries were performed and the output was verified.
